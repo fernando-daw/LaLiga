@@ -1,0 +1,105 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+public class Mainayuda {
+    public static void main(String[] args) {
+        public class LigaDeFutbol {
+
+            private static final int NUMERO_EQUIPOS = 22;
+            private static final int NUMERO_PARTIDOS_POR_JORNADA = 11;
+
+            private String nombreLiga;
+            private List<Equipo> equipos;
+
+            public static void main(String[] args) {
+                LigaDeFutbol liga = new LigaDeFutbol();
+                Scanner scanner = new Scanner(System.in);
+                int opcion = 0;
+                boolean salir = false;
+
+                while (!salir) {
+                    System.out.println("\nMenú:");
+                    System.out.println("1. Crear nueva liga");
+                    System.out.println("2. Jugar liga");
+                    System.out.println("3. Pausar liga");
+                    System.out.println("4. Eliminar liga actual");
+                    System.out.println("5. Salir");
+
+                    System.out.print("Elija una opción: ");
+                    opcion = scanner.nextInt();
+
+                    switch (opcion) {
+                        case 1:
+                            liga.crearNuevaLiga(scanner);
+                            break;
+                        case 2:
+                            if (liga.hayLigaCreada()) {
+                                liga.jugarLiga(scanner);
+                            } else {
+                                System.out.println("Primero debe crear una liga.");
+                            }
+                            break;
+                        case 3:
+                            if (liga.hayLigaCreada()) {
+                                System.out.println("Liga pausada.");
+                            } else {
+                                System.out.println("Primero debe crear una liga.");
+                            }
+                            break;
+                        case 4:
+                            if (liga.hayLigaCreada()) {
+                                liga.eliminarLigaActual(scanner);
+                            } else {
+                                System.out.println("No hay ninguna liga creada.");
+                            }
+                            break;
+                        case 5:
+                            salir = true;
+                            break;
+                        default:
+                            System.out.println("Opción inválida.");
+                            break;
+                    }
+                }
+            }
+
+            private boolean hayLigaCreada() {
+                return this.nombreLiga != null && !this.nombreLiga.isEmpty() && this.equipos != null && !this.equipos.isEmpty();
+            }
+
+            private void crearNuevaLiga(Scanner scanner) {
+                System.out.print("Ingrese el nombre de la liga: ");
+                this.nombreLiga = scanner.next();
+
+                this.equipos = new ArrayList<>(NUMERO_EQUIPOS);
+
+                for (int i = 1; i <= NUMERO_EQUIPOS; i++) {
+                    System.out.print("Ingrese el nombre del equipo " + i + ": ");
+                    String nombreEquipo = scanner.next();
+                    Equipo equipo = new Equipo(nombreEquipo);
+                    this.equipos.add(equipo);
+                }
+
+                System.out.println("Liga creada con éxito.");
+            }
+
+            private void jugarLiga(Scanner scanner) {
+                int jornadaActual = 1;
+                boolean salir = false;
+
+                while (!salir) {
+                    System.out.println("\nJugar liga:");
+                    System.out.println("1. Siguiente jornada");
+                    System.out.println("2. Consultar tabla");
+                    System.out.println("3. Pausar liga");
+
+                    System.out.print("Elija una opción: ");
+                    int opcion = scanner.nextInt();
+
+                    switch (opcion) {
+                        case 1:
+                            System.out.println("\nJornada " + jornadaActual + ":");
+                            List<Partido> part
+
+                    }
+}
