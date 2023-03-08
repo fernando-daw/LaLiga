@@ -37,6 +37,13 @@ public class Main {
                     }else {
                         System.out.println("Debes crear una liga primero");
                     }
+                    break;
+                case 5:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opción inválida.");
+                    break;
 
 
                 }
